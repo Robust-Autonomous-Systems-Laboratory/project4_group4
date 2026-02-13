@@ -1,2 +1,6 @@
-.vscode/
-src/.vscode/
+.vscode/*
+src/.vscode/*
+build/*
+install/*
+log/*
+
