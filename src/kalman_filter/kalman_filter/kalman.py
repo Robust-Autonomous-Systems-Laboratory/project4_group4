@@ -20,7 +20,8 @@ class KalmanFilter:
         """
         self.x = np.dot(self.F, self.x) + np.dot(self.B, u)
         self.P = np.dot(self.F, np.dot(self.P, np.transpose(self.F))) + self.Q
-        return self.x
+        x = self.x
+        return x
 
     def update(self,z):
         """
@@ -35,8 +36,9 @@ class KalmanFilter:
         K = np.dot(np.dot(self.P, np.transpose(self.H)), np.linalg.inv(S))
         self.x = self.x + np.dot(K, y)
         self.P = np.dot((np.identity(self.P.shape[0]) - np.dot(K,self.H)), self.P)
+        x = self.x
         residual = z - np.dot(self.H, self.x)
-        return self.x, residual
+        return x, residual
 
 
 
