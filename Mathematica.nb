@@ -1,0 +1,184 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      6057,        174]
+NotebookOptionsPosition[      5576,        158]
+NotebookOutlinePosition[      6008,        175]
+CellTagsIndexPosition[      5965,        172]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+Kalman Filter
+\tonly velocity is controlled. We can\[CloseCurlyQuote]t actually measure \
+pos. from wheel encoders, only orientation\
+\>", "Text",
+ CellChangeTimes->{{3.979993129985469*^9, 3.9799931326557207`*^9}, {
+   3.9799949752916527`*^9, 3.979995042898114*^9}, 
+   3.979995108007831*^9},ExpressionUUID->"9ad10c1b-10ec-4c7b-920e-\
+03ced90c90a0"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   OverscriptBox["x", "^"], "_world"}], "=", 
+  RowBox[{"(", GridBox[{
+     {"x"},
+     {GridBox[{
+        {
+         OverscriptBox["x", "."]},
+        {
+         OverscriptBox["x", "\[DoubleDot]"]}
+       }]},
+     {"y"},
+     {
+      OverscriptBox["y", "."]},
+     {
+      OverscriptBox["y", "\[DoubleDot]"]},
+     {"\[Theta]"},
+     {
+      OverscriptBox["\[Theta]", "."]},
+     {
+      OverscriptBox["\[Theta]", "\[DoubleDot]"]}
+    }], ")"}]}], "\[IndentingNewLine]", 
+ RowBox[{"F", "=", 
+  RowBox[{"(", GridBox[{
+     {"1", "\[CapitalDelta]t", "0", "0", "0", "0", "0", "0", "0"},
+     {"0", "1", "\[CapitalDelta]t", "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "1", "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "0", "1", "\[CapitalDelta]t", "0", "0", "0", "0"},
+     {"0", "0", "0", "0", "1", "\[CapitalDelta]t", "0", "0", "0"},
+     {"0", "0", "0", "0", "0", "1", "0", "0", "0"},
+     {"0", "0", "0", "0", "0", "0", "1", "\[CapitalDelta]t", "0"},
+     {"0", "0", "0", "0", "0", "0", "0", "1", "\[CapitalDelta]t"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "1"}
+    }], ")"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   OverscriptBox["z", "^"], "_world"}], "=", 
+  RowBox[{"(", GridBox[{
+     {"0"},
+     {"0"},
+     {
+      OverscriptBox["x", "\[DoubleDot]"]},
+     {"0"},
+     {"0"},
+     {
+      OverscriptBox["y", "\[DoubleDot]"]},
+     {"\[Theta]"},
+     {
+      OverscriptBox["\[Theta]", "."]},
+     {"0"}
+    }], ")"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"H", " ", "=", 
+   RowBox[{"(", GridBox[{
+      {"1", "0", "0", "0", "0", "0", "0", "0", "0"},
+      {"0", "1", "0", "0", "0", "0", "0", "0", "0"},
+      {"0", "0", "1", "0", "0", "0", "0", "0", "0"},
+      {"0", "0", "0", "1", "0", "0", "0", "0", "0"},
+      {"0", "0", "0", "0", "1", "0", "0", "0", "0"},
+      {"0", "0", "0", "0", "0", "1", "0", "0", "0"},
+      {"0", "0", "0", "0", "0", "0", "1", "0", "0"},
+      {"0", "0", "0", "0", "0", "0", "0", "1", "0"},
+      {"0", "0", "0", "0", "0", "0", "0", "0", "1"}
+     }], ")"}]}], " "}], "\[IndentingNewLine]", 
+ RowBox[{"Q", " ", "=", " ", 
+  RowBox[{"(", GridBox[{
+     {"1", "0", "0", "0", "0", "0", "0", "0", "0"},
+     {"0", "1", "0", "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "1", "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "0", "1", "0", "0", "0", "0", "0"},
+     {"0", "0", "0", "0", "1", "0", "0", "0", "0"},
+     {"0", "0", "0", "0", "0", "1", "0", "0", "0"},
+     {"0", "0", "0", "0", "0", "0", "1", "0", "0"},
+     {"0", "0", "0", "0", "0", "0", "0", "1", "0"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "1"}
+    }], ")"}]}], "\[IndentingNewLine]", 
+ RowBox[{"R", " ", "=", " ", 
+  RowBox[{"(", GridBox[{
+     {"1", "0", "0", "0", "0", "0", "0", "0", "0"},
+     {"0", "1", "0", "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "1", "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "0", "1", "0", "0", "0", "0", "0"},
+     {"0", "0", "0", "0", "1", "0", "0", "0", "0"},
+     {"0", "0", "0", "0", "0", "1", "0", "0", "0"},
+     {"0", "0", "0", "0", "0", "0", "1", "0", "0"},
+     {"0", "0", "0", "0", "0", "0", "0", "1", "0"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "1"}
+    }], ")"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   OverscriptBox["u", "^"], "_world"}], "=", 
+  RowBox[{"(", GridBox[{
+     {"0"},
+     {
+      OverscriptBox["x", "."]},
+     {"0"},
+     {"0"},
+     {
+      OverscriptBox["y", "."]},
+     {"0"},
+     {"0"},
+     {
+      OverscriptBox["\[Theta]", "."]},
+     {"0"}
+    }], ")"}]}], "\[IndentingNewLine]", 
+ RowBox[{"B", "=", 
+  RowBox[{"(", GridBox[{
+     {"1", "0", "0", "0", "0", "0", "0", "0", "0"},
+     {"0", "1", "0", "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "1", "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "0", "1", "0", "0", "0", "0", "0"},
+     {"0", "0", "0", "0", "1", "0", "0", "0", "0"},
+     {"0", "0", "0", "0", "0", "1", "0", "0", "0"},
+     {"0", "0", "0", "0", "0", "0", "1", "0", "0"},
+     {"0", "0", "0", "0", "0", "0", "0", "1", "0"},
+     {"0", "0", "0", "0", "0", "0", "0", "0", "1"}
+    }], ")"}]}]}], "Input",
+ CellChangeTimes->{{3.9799931402071323`*^9, 3.9799933378203897`*^9}, {
+  3.9799933972633953`*^9, 3.979993489009919*^9}, {3.9799935362810373`*^9, 
+  3.979993723849484*^9}, {3.979993825472439*^9, 3.979993832423038*^9}, {
+  3.979993998421048*^9, 3.979994095377254*^9}, {3.97999477978793*^9, 
+  3.97999478808385*^9}, {3.979994836009718*^9, 3.979994953479237*^9}, {
+  3.979995078123695*^9, 3.979995191706164*^9}, {3.979995607602827*^9, 
+  3.979995610901594*^9}, {3.979998048544161*^9, 
+  3.9799980823030148`*^9}},ExpressionUUID->"22f8ac8c-5345-4d28-82cc-\
+a2585d84b8ac"]
+},
+WindowSize->{1435.5, 705.75},
+WindowMargins->{{-2.25, Automatic}, {Automatic, -22.5}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"14.3 for Linux x86 (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"bcca7d1f-3ec0-4cb2-b952-13c0e2b51c96"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 359, 8, 69, "Text",ExpressionUUID->"9ad10c1b-10ec-4c7b-920e-03ced90c90a0"],
+Cell[916, 30, 4656, 126, 1836, "Input",ExpressionUUID->"22f8ac8c-5345-4d28-82cc-a2585d84b8ac"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,14 +1,25 @@
 import rclpy
+import numpy as np
+import math as m
 from rclpy.node import Node
 from rclpy.qos import QoSProfile, ReliabilityPolicy
 from sensor_msgs.msg import JointState, Imu
 from geometry_msgs.msg import TwistStamped
 from nav_msgs.msg import Path, Odometry
+from kalman import KalmanFilter
+from kalman_prams import kf_prams
 
-class Localizer(Node):
+PUBLISHER_FREQUENCY_HZ = 20
+class Localizer(Node): 
     def __init__(self):
-        qos_profile = QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT)
         super().__init__('localizer_node')
+        
+        self.delta_t = 1/PUBLISHER_FREQUENCY_HZ
+
+        self.F, self.B, self.H, self.Q,self.R, self.x0, self.P0 = kf_prams(self.delta_t)
+        self.kalman_filter = KalmanFilter(self.F, self.H, self.Q, self.R,self.B, self.x0, self.P0)
+
+        qos_profile = QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT)
 
         self.joint_state_subscription = self.create_subscription(JointState,'/joint_states', self.joint_state_callback, qos_profile)
         self.imu_subscription = self.create_subscription(Imu,'/imu', self.imu_callback, qos_profile)
@@ -22,28 +33,64 @@ class Localizer(Node):
         self.ekf_odom_publisher = self.create_publisher(Odometry, 'localization_node/ekf/odometry', 10)
         self.ukf_odom_publisher = self.create_publisher(Odometry, 'localization_node/ukf/odometry', 10)
 
-        
     def joint_state_callback(self, msg):
         # check what these actually are
         self.js_x = msg.position[0]
         self.js_y = msg.position[1]
-        self.JOINT_STATE_IS_FRESH = True
     
     def imu_callback(self, msg):
-        self.imu_ang_x_vel = msg.angular_velocity.x
-        self.imu_ang_y_vel = msg.angular_velocity.y
-        self.imu_ang_z_vel = msg.angular_velocity.z
+        self.imu_w = msg.angular_velocity.z
+        self.imu_ax = msg.linear_acceleration.x
+        self.imu_ay = msg.linear_acceleration.y
 
-        self.imu_x_acc = msg.linear_acceleration.x
-        self.imu_y_acc = msg.linear_acceleration.y
-        self.imu_z_acc = msg.linear_acceleration.z
-        self.IMU_IS_FRESH = True
-
-    def imu_callback(self, msg):
+    def cmd_vel_callback(self, msg):
         self.cmd_vel_x = msg.twist.linear.x
-        self.cmd_vel_x = msg.twist.linear.y
-        self.cmd_vel_x = msg.twist.linear.z
-        self.cmd_vel_t = msg.twist.angular.z
-        self.CMD_VEL_IS_FRESH = True
+        self.cmd_vel_y = msg.twist.linear.y
+        self.cmd_vel_w = msg.twist.angular.z
+
+    def kf_predict(self):
+        theta = self.kalman_filter.x[6,0]
+        world_x_vel = (self.cmd_vel_x*m.cos(theta)) - (self.cmd_vel_y*m.sin(theta))
+        world_y_vel = (self.cmd_vel_x*m.sin(theta)) + (self.cmd_vel_y*m.cos(theta))
+        world_w = self.cmd_vel_w
+        u = np.array([[0],
+                      [world_x_vel],
+                      [0],
+                      [0],
+                      [world_y_vel],
+                      [0],
+                      [0],
+                      [world_w],
+                      [0]])
+        return self.kalman_filter.predict(u)
+
+    def kf_update(self):
+        theta = self.kalman_filter.x[6,0]
+        world_x_acc = (self.cmd_vel_x*m.cos(theta)) - (self.cmd_vel_y*m.sin(theta))
+        world_y_acc = (self.cmd_vel_x*m.sin(theta)) + (self.cmd_vel_y*m.cos(theta))
+        world_t = 
+        world_w = self.cmd_vel_w
+        u = np.array([[0],
+                      [0],
+                      [0],
+                      [0],
+                      [0],
+                      [0],
+                      [0],
+                      [0],
+                      [0]])
+        return self.kalman_filter.predict(u)
+
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    localizer_node = Localizer()
+    rclpy.spin(localizer_node)
+    localizer_node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
 
 

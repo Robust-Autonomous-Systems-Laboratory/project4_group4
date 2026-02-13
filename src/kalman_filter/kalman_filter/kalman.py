@@ -2,18 +2,6 @@ import numpy as np
 
 class KalmanFilter:
     def __init__(self, F, H, Q, R, B, x_0, P_0) -> None:
-        """
-        Docstring for __init__
-        
-        :param self: Description
-        :param F: 3x3 matrix
-        :param H: Description
-        :param Q: Description
-        :param R: Description
-        :param B: 3x3 matrix
-        :param x_0: 3x1 vector
-        :param P_0: Description
-        """
         self.F = F
         self.H = H
         self.Q = Q
@@ -50,38 +38,5 @@ class KalmanFilter:
         residual = z - np.dot(self.H, self.x)
         return self.x, residual
 
-def test(): 
-    F = np.array([[1,1,0,0,0,0,0,0],
-                  [0,1,1,0,0,0,0,0],
-                  [0,0,1,0,0,0,0,0],
-                  [0,0,0,1,1,0,0,0],
-                  [0,0,0,0,1,1,0,0],
-                  [0,0,0,0,0,1,0,0],
-                  [0,0,0,0,0,0,1,1],
-                  [0,0,0,0,0,0,0,1]])
-    
-    B = np.array([[0,0,0,0,0,0,0,0],
-                  [0,1,0,0,0,0,0,0],
-                  [0,0,0,0,0,0,0,0],
-                  [0,0,0,0,0,0,0,0],
-                  [0,0,0,1,0,0,0,0],
-                  [0,0,0,0,0,0,0,0],
-                  [0,0,0,0,0,0,0,0],
-                  [0,0,0,0,0,0,0,1]])
-    
-    H = np.array([[1,2,3]])
-    Q = np.array([[1,2,3],[0,1,2],[1,2,3]])
-    R = np.array([[1,2,3],[0,1,2],[1,2,3]])
-    x0 = np.array([[1],[1],[1]])
-    P0 = np.array([[1],[1],[1]])
-    kf = KalmanFilter(F, H, Q, R, B, x0, P0)
-    u = np.array([[1],[1],[1]])
-    z = np.array([[1],[1],[1]])
 
-    predicted_state = kf.predict(u)
-    print("Predicted state:\n", predicted_state)
-
-    updated_state = kf.update(z)
-    print("Updated state:\n", updated_state)
-test()
 
