@@ -21,8 +21,8 @@ class Localizer(Node):
         self.delta_t = 1/PUBLISHER_FREQUENCY_HZ
         self.timer = self.create_timer(self.delta_t, self.timer_callback)
 
-        kf = Kf_prams(self.delta_t)
-        self.kalman_filter = KalmanFilter(kf.F, kf.H, kf.Q, kf.R, kf.B, kf.x0, kf.P0)
+        self.kf = Kf_prams(self.delta_t)
+        self.kalman_filter = KalmanFilter(self.kf.F, self.kf.H, self.kf.Q, self.kf.R, self.kf.B, self.kf.x0, self.kf.P0)
 
         subscriber_qos_profile = QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT)
         self.joint_state_subscription = self.create_subscription(JointState,'/joint_states', self.joint_state_callback, subscriber_qos_profile)
@@ -88,20 +88,21 @@ class Localizer(Node):
 
     def kf_update(self):
         theta = self.kalman_filter.x[6,0]
-        world_x_acc = (self.imu_ax*m.cos(theta)) - (self.imu_ay*m.sin(theta))
-        world_y_acc = (self.imu_ax*m.sin(theta)) + (self.imu_ay*m.cos(theta))
+        H = self.kf.update_prams(theta)
+        #world_x_acc = (self.imu_ax*m.cos(theta)) - (self.imu_ay*m.sin(theta))
+        #world_y_acc = (self.imu_ax*m.sin(theta)) + (self.imu_ay*m.cos(theta))
         world_t = (2*m.pi*ROBOT_WHEEL_RADIUS*(self.js_right_wheel-self.js_left_wheel))/ROBOT_WHEELBASE
         world_w = self.cmd_vel_w
         z = np.array([[0],
                       [0],
-                      [world_x_acc],
+                      [self.imu_ax],
                       [0],
                       [0],
-                      [world_y_acc], 
+                      [self.imu_ay], 
                       [world_t],
                       [world_w],
                       [0]])
-        return self.kalman_filter.update(z)
+        return self.kalman_filter.update(z,H)
     
     def timer_callback(self):
         if(self.FRESH_JOINT_STATE and self.FRESH_IMU):

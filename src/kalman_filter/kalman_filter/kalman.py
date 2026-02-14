@@ -23,7 +23,7 @@ class KalmanFilter:
         x = self.x
         return x
 
-    def update(self,z):
+    def update(self,z,H):
         """
         Docstring for update
         
@@ -31,6 +31,7 @@ class KalmanFilter:
         :param z: Observation Vector
         :return: Estimation of the current state
         """
+        self.H = H
         y = z - np.dot(self.H, self.x)
         S = np.dot(self.H, np.dot(self.P, np.transpose(self.H))) + self.R
         K = np.dot(np.dot(self.P, np.transpose(self.H)), np.linalg.inv(S))
@@ -57,7 +58,7 @@ def test():
     predicted_state = kf.predict(u)
     print("Predicted state:\n", predicted_state)
 
-    updated_state = kf.update(z)
+    updated_state = kf.update(z,H)
     print("Updated state:\n", updated_state)
 #test()
 
