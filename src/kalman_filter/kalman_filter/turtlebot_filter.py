@@ -91,7 +91,7 @@ class Localizer(Node):
         H = self.kf.update_prams(theta)
         #world_x_acc = (self.imu_ax*m.cos(theta)) - (self.imu_ay*m.sin(theta))
         #world_y_acc = (self.imu_ax*m.sin(theta)) + (self.imu_ay*m.cos(theta))
-        world_t = (2*m.pi*ROBOT_WHEEL_RADIUS*(self.js_right_wheel-self.js_left_wheel))/ROBOT_WHEELBASE
+        world_t = ((ROBOT_WHEEL_RADIUS*(self.js_right_wheel-self.js_left_wheel))/(ROBOT_WHEELBASE))-(m.pi/2)
         world_w = self.cmd_vel_w
         z = np.array([[0],
                       [0],
@@ -109,7 +109,7 @@ class Localizer(Node):
             
             x_prediction = self.kf_predict()
             x_update, residual = self.kf_update()
-            print("updating!")
+            #print("updating!")
             self.FRESH_JOINT_STATE = False
             self.FRESH_IMU = False
             self.FRESH_CMD_VEL = False
@@ -120,7 +120,9 @@ class Localizer(Node):
             current_pose.header.frame_id = 'odom'
             current_pose.pose.position.x = x_update[0,0]
             current_pose.pose.position.y = x_update[3,0]
-
+            #print("x = ",current_pose.pose.position.x)
+            #print("y = ",current_pose.pose.position.y)
+            #print("\n")
             #get orientation quaternion
             w,x,y,z = convertEulerToQuaternion(0,0,x_update[6,0])
             current_pose.pose.orientation.w = w

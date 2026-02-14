@@ -21,6 +21,8 @@ class KalmanFilter:
         self.x = np.dot(self.F, self.x) + np.dot(self.B, u)
         self.P = np.dot(self.F, np.dot(self.P, np.transpose(self.F))) + self.Q
         x = self.x
+        print("u = \n",u)
+        print("estimated x = \n", x)
         return x
 
     def update(self,z,H):
@@ -39,6 +41,9 @@ class KalmanFilter:
         self.P = np.dot((np.identity(self.P.shape[0]) - np.dot(K,self.H)), self.P)
         x = self.x
         residual = z - np.dot(self.H, self.x)
+        print("z = \n", z)
+        print("updated x = \n", x)
+        print("\n")
         return x, residual
 
 def test():
