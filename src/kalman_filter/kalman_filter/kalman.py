@@ -40,5 +40,25 @@ class KalmanFilter:
         residual = z - np.dot(self.H, self.x)
         return x, residual
 
+def test():
+    # matrices taken from
+    # https://www.geeksforgeeks.org/python/kalman-filter-in-python/
+    F = np.array([[1, 1], [0, 1]])
+    B = np.array([[0.5], [1]])
+    H = np.array([[1, 0]])
+    Q = np.array([[1, 0], [0, 1]])
+    R = np.array([[1]])
+    x0 = np.array([[0], [1]])
+    P0 = np.array([[1, 0], [0, 1]])
+    u = np.array([[1]])
+    z = np.array([[1]])
+    kf = KalmanFilter(F, H, Q, R, B, x0, P0)
+
+    predicted_state = kf.predict(u)
+    print("Predicted state:\n", predicted_state)
+
+    updated_state = kf.update(z)
+    print("Updated state:\n", updated_state)
+#test()
 
 

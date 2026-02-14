@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'kalman_filter'
+package_name = 'covariance_calc'
 
 setup(
     name=package_name,
@@ -24,8 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'turtlebot_filter = kalman_filter.turtlebot_filter:main',
-            'static_tf2_broadcaster = kalman_filter.static_tf_publisher:main'
+            'covariance_calculator = covariance_calc.covariance_calculator_node:main'
         ],
     },
 )

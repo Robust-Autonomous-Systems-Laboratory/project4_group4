@@ -2,18 +2,18 @@ import rclpy
 import numpy as np
 import math as m
 from rclpy.node import Node
-from rclpy.qos import QoSProfile, ReliabilityPolicy
+from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy
 from sensor_msgs.msg import JointState, Imu
 from geometry_msgs.msg import TwistStamped, PoseStamped
 from nav_msgs.msg import Path, Odometry
-from kalman import KalmanFilter
-from kalman_prams import Kf_prams
+from kalman_filter.kalman import KalmanFilter
+from kalman_filter.kalman_prams import Kf_prams
 from rclpy.clock import Clock
-from euler_quaternion import convertEulerToQuaternion
+from kalman_filter.euler_quaternion import convertEulerToQuaternion
 
 PUBLISHER_FREQUENCY_HZ = 20
-ROBOT_WHEELBASE = 1
-ROBOT_WHEEL_RADIUS = 1
+ROBOT_WHEELBASE = 0.16
+ROBOT_WHEEL_RADIUS = 0.033
 class Localizer(Node): 
     def __init__(self):
         super().__init__('localizer_node')
@@ -24,29 +24,38 @@ class Localizer(Node):
         kf = Kf_prams(self.delta_t)
         self.kalman_filter = KalmanFilter(kf.F, kf.H, kf.Q, kf.R, kf.B, kf.x0, kf.P0)
 
-        qos_profile = QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT)
-
-        self.joint_state_subscription = self.create_subscription(JointState,'/joint_states', self.joint_state_callback, qos_profile)
+        subscriber_qos_profile = QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT)
+        self.joint_state_subscription = self.create_subscription(JointState,'/joint_states', self.joint_state_callback, subscriber_qos_profile)
         self.FRESH_JOINT_STATE = False
-        self.imu_subscription = self.create_subscription(Imu,'/imu', self.imu_callback, qos_profile)
+        self.imu_subscription = self.create_subscription(Imu,'/imu', self.imu_callback, subscriber_qos_profile)
         self.FRESH_IMU = False
-        self.cmd_vel_subscription = self.create_subscription(TwistStamped,'/cmd_vel', self.cmd_vel_callback, qos_profile)
+        self.cmd_vel_subscription = self.create_subscription(TwistStamped,'/cmd_vel', self.cmd_vel_callback, subscriber_qos_profile)
         self.FRESH_CMD_VEL = False    
 
-        self.kf_path_publisher = self.create_publisher(Path, 'localization_node/kf/path', 10)
+        publisher_qos_profile = QoSProfile(depth=100, durability=DurabilityPolicy.TRANSIENT_LOCAL)
+        self.kf_path_publisher = self.create_publisher(Path, 'localization_node/kf/path', publisher_qos_profile)
+        self.kf_odom_publisher = self.create_publisher(Odometry, 'localization_node/kf/odometry', publisher_qos_profile)
         self.kf_path_arr = []
-        self.ekf_path_publisher = self.create_publisher(Path, 'localization_node/ekf/path', 10)
-        self.ukf_path_publisher = self.create_publisher(Path, 'localization_node/ukf/path', 10)
 
-        self.kf_odom_publisher = self.create_publisher(Odometry, 'localization_node/kf/odometry', 10)
-        self.ekf_odom_publisher = self.create_publisher(Odometry, 'localization_node/ekf/odometry', 10)
-        self.ukf_odom_publisher = self.create_publisher(Odometry, 'localization_node/ukf/odometry', 10)
-        
+        self.ekf_path_publisher = self.create_publisher(Path, 'localization_node/ekf/path', publisher_qos_profile)
+        self.ukf_path_publisher = self.create_publisher(Path, 'localization_node/ukf/path', publisher_qos_profile)
+
+        self.ekf_odom_publisher = self.create_publisher(Odometry, 'localization_node/ekf/odometry', publisher_qos_profile)
+        self.ukf_odom_publisher = self.create_publisher(Odometry, 'localization_node/ukf/odometry', publisher_qos_profile)
+
+        self.js_right_wheel = 0
+        self.js_left_wheel = 0
+        self.imu_w = 0
+        self.imu_ax = 0
+        self.imu_ay = 0
+        self.cmd_vel_x = 0
+        self.cmd_vel_y = 0
+        self.cmd_vel_w = 0
 
     def joint_state_callback(self, msg):
         # check what these actually are
-        self.js_right_wheel = msg.position[0]
-        self.js_left_wheel = msg.position[1]
+        self.js_right_wheel = msg.position[1]
+        self.js_left_wheel = msg.position[0]
         self.FRESH_JOINT_STATE = True
     
     def imu_callback(self, msg):
@@ -99,6 +108,7 @@ class Localizer(Node):
             
             x_prediction = self.kf_predict()
             x_update, residual = self.kf_update()
+            print("updating!")
             self.FRESH_JOINT_STATE = False
             self.FRESH_IMU = False
             self.FRESH_CMD_VEL = False
@@ -107,11 +117,11 @@ class Localizer(Node):
             current_pose = PoseStamped()
             current_pose.header.stamp = Clock().now().to_msg()
             current_pose.header.frame_id = 'odom'
-            current_pose.pose.position.x = x_update.x[0,0]
-            current_pose.pose.position.y = x_update.x[3,0]
+            current_pose.pose.position.x = x_update[0,0]
+            current_pose.pose.position.y = x_update[3,0]
 
             #get orientation quaternion
-            w,x,y,z = convertEulerToQuaternion(0,0,x_update.x[6,0])
+            w,x,y,z = convertEulerToQuaternion(0,0,x_update[6,0])
             current_pose.pose.orientation.w = w
             current_pose.pose.orientation.x = x
             current_pose.pose.orientation.y = y
@@ -131,11 +141,6 @@ class Localizer(Node):
             self.kf_path_arr.append(current_pose)
             path.poses = self.kf_path_arr
             self.kf_path_publisher.publish(path)
-
-
-
-
-
 
 def main(args=None):
     rclpy.init(args=args)
