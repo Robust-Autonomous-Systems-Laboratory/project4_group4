@@ -6,8 +6,8 @@ from rclpy.qos import QoSProfile, ReliabilityPolicy, DurabilityPolicy
 from sensor_msgs.msg import JointState, Imu
 from geometry_msgs.msg import TwistStamped, PoseStamped
 from nav_msgs.msg import Path, Odometry
-from kalman_filter.kalman import KalmanFilter
-from kalman_filter.kalman_prams import Kf_prams
+from kalman_filter.kalman import KalmanFilter, ExtendedKalmanFilter
+from kalman_filter.kalman_prams import Kf_prams,Ekf_prams
 from rclpy.clock import Clock
 from kalman_filter.euler_quaternion import convertEulerToQuaternion
 
@@ -22,7 +22,10 @@ class Localizer(Node):
         self.timer = self.create_timer(self.delta_t, self.timer_callback)
 
         self.kf = Kf_prams(self.delta_t)
+        self.ekf = Ekf_prams(self.delta_t)
         self.kalman_filter = KalmanFilter(self.kf.F, self.kf.H, self.kf.Q, self.kf.R, self.kf.B, self.kf.x0, self.kf.P0)
+        self.extended_kalman_filter = ExtendedKalmanFilter(self.ekf.F, self.ekf.H, self.ekf.Q, self.ekf.R, self.ekf.B, self.ekf.x0, self.ekf.P0)
+
 
         subscriber_qos_profile = QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT)
         self.joint_state_subscription = self.create_subscription(JointState,'/joint_states', self.joint_state_callback, subscriber_qos_profile)
@@ -39,6 +42,7 @@ class Localizer(Node):
 
         self.ekf_path_publisher = self.create_publisher(Path, 'localization_node/ekf/path', publisher_qos_profile)
         self.ukf_path_publisher = self.create_publisher(Path, 'localization_node/ukf/path', publisher_qos_profile)
+        self.ekf_path_arr = []
 
         self.ekf_odom_publisher = self.create_publisher(Odometry, 'localization_node/ekf/odometry', publisher_qos_profile)
         self.ukf_odom_publisher = self.create_publisher(Odometry, 'localization_node/ukf/odometry', publisher_qos_profile)
@@ -53,7 +57,6 @@ class Localizer(Node):
         self.cmd_vel_w = 0
 
     def joint_state_callback(self, msg):
-        # check what these actually are
         self.js_right_wheel = msg.position[1]
         self.js_left_wheel = msg.position[0]
         self.FRESH_JOINT_STATE = True
@@ -88,9 +91,43 @@ class Localizer(Node):
 
     def kf_update(self):
         theta = self.kalman_filter.x[6,0]
-        H = self.kf.update_prams(theta)
-        #world_x_acc = (self.imu_ax*m.cos(theta)) - (self.imu_ay*m.sin(theta))
-        #world_y_acc = (self.imu_ax*m.sin(theta)) + (self.imu_ay*m.cos(theta))
+        #H = self.kf.update_prams(theta)
+        world_t = ((ROBOT_WHEEL_RADIUS*(self.js_right_wheel-self.js_left_wheel))/(ROBOT_WHEELBASE))-(m.pi/2)
+        world_w = self.cmd_vel_w
+        x_acc = (self.imu_ax*m.cos(theta)) - (self.imu_ax*m.sin(theta))
+        y_acc = (self.imu_ax*m.sin(theta)) + (self.imu_ax*m.cos(theta))
+        z = np.array([[0],
+                      [0],
+                      [x_acc],
+                      [0],
+                      [0],
+                      [y_acc], 
+                      [world_t],
+                      [world_w],
+                      [0]])
+        return self.kalman_filter.update(z)
+
+    def ekf_predict(self):
+        theta = self.extended_kalman_filter.x[6,0]
+        world_x_vel = (self.cmd_vel_x*m.cos(theta)) - (self.cmd_vel_y*m.sin(theta))
+        world_y_vel = (self.cmd_vel_x*m.sin(theta)) + (self.cmd_vel_y*m.cos(theta))
+        world_w = self.cmd_vel_w
+        u = np.array([[0],
+                      [world_x_vel],
+                      [0],
+                      [0],
+                      [world_y_vel],
+                      [0],
+                      [0],
+                      [world_w],
+                      [0]])
+        return self.extended_kalman_filter.predict(u)
+
+    def ekf_update(self):
+        theta = self.extended_kalman_filter.x[6,0]
+        x_acc = self.extended_kalman_filter.x[2,0]
+        y_acc = self.extended_kalman_filter.x[5,0]
+        H = self.ekf.update_prams(theta,x_acc,y_acc)
         world_t = ((ROBOT_WHEEL_RADIUS*(self.js_right_wheel-self.js_left_wheel))/(ROBOT_WHEELBASE))-(m.pi/2)
         world_w = self.cmd_vel_w
         z = np.array([[0],
@@ -102,48 +139,57 @@ class Localizer(Node):
                       [world_t],
                       [world_w],
                       [0]])
-        return self.kalman_filter.update(z,H)
-    
+        return self.extended_kalman_filter.update(z,H)
+
     def timer_callback(self):
         if(self.FRESH_JOINT_STATE and self.FRESH_IMU):
             
-            x_prediction = self.kf_predict()
-            x_update, residual = self.kf_update()
+            kf_x_prediction = self.kf_predict()
+            kf_x_update, kf_residual = self.kf_update()
+            ekf_x_prediction = self.ekf_predict()
+            ekf_x_update, ekf_residual = self.ekf_update()
             #print("updating!")
             self.FRESH_JOINT_STATE = False
             self.FRESH_IMU = False
             self.FRESH_CMD_VEL = False
-            
+            kf_odom, kf_path, self.kf_path_arr = self.message_generator(kf_x_update[0,0],kf_x_update[3,0],kf_x_update[6,0],self.kf_path_arr)
+            ekf_odom, ekf_path, self.ekf_path_arr = self.message_generator(ekf_x_update[0,0],ekf_x_update[3,0],ekf_x_update[6,0],self.ekf_path_arr)
+            self.kf_path_publisher.publish(kf_path)
+            self.kf_odom_publisher.publish(kf_odom)
+            self.ekf_path_publisher.publish(ekf_path)
+            self.ekf_odom_publisher.publish(ekf_odom)
+
+    def message_generator(self,x,y,t,path_arr):
             #generate pose message
             current_pose = PoseStamped()
             current_pose.header.stamp = Clock().now().to_msg()
             current_pose.header.frame_id = 'odom'
-            current_pose.pose.position.x = x_update[0,0]
-            current_pose.pose.position.y = x_update[3,0]
+            current_pose.pose.position.x = x
+            current_pose.pose.position.y = y
             #print("x = ",current_pose.pose.position.x)
             #print("y = ",current_pose.pose.position.y)
             #print("\n")
             #get orientation quaternion
-            w,x,y,z = convertEulerToQuaternion(0,0,x_update[6,0])
+            w,x,y,z = convertEulerToQuaternion(0,0,t)
             current_pose.pose.orientation.w = w
             current_pose.pose.orientation.x = x
             current_pose.pose.orientation.y = y
             current_pose.pose.orientation.z = z
 
-            #publish odom message
+            #get odom message
             odom = Odometry()
             odom.header.stamp = Clock().now().to_msg()
             odom.header.frame_id = 'odom'
             odom.pose.pose = current_pose.pose
-            self.kf_odom_publisher.publish(odom)
 
-            #publish path values
+            #get path values
             path = Path()
             path.header.stamp = Clock().now().to_msg()
             path.header.frame_id = 'odom'
-            self.kf_path_arr.append(current_pose)
-            path.poses = self.kf_path_arr
-            self.kf_path_publisher.publish(path)
+            path_arr.append(current_pose)
+            path.poses = path_arr
+            return odom, path, path_arr
+
 
 def main(args=None):
     rclpy.init(args=args)
