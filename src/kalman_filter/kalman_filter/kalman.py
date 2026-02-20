@@ -22,8 +22,8 @@ class KalmanFilter:
         self.x = np.dot(self.F, self.x) + np.dot(self.B, u)
         self.P = np.dot(self.F, np.dot(self.P, np.transpose(self.F))) + self.Q
         x = self.x
-        print("u = \n",u)
-        print("estimated x = \n", x)
+        #print("u = \n",u)
+        #print("estimated x = \n", x)
         return x
 
     def update(self,z):
@@ -41,11 +41,11 @@ class KalmanFilter:
         self.x = self.x + np.dot(K, y)
         self.P = np.dot((np.identity(self.P.shape[0]) - np.dot(K,self.H)), self.P)
         x = self.x
-        residual = z - np.dot(self.H, self.x)
-        print("z = \n", z)
-        print("updated x = \n", x)
-        print("\n")
-        return x, residual
+        residual = abs(z - np.dot(self.H, self.x))
+        #print("z = \n", z)
+        #print("updated x = \n", x)
+        #print("\n")
+        return x, residual, self.P
 
 class UnscentedKalmanFilter:
     """
@@ -61,56 +61,93 @@ class UnscentedKalmanFilter:
         self.Pxx = P_0
         self.deltaT = deltaT
         self.alpha = 0.001
-        self.k = 0 
+        self.k = 1
         self.beta = 2
-        self.n = len(self.x[0])
+        self.n = len(self.x)
         self.n_sigma = (2 * self.n) + 1
-        self.lambda_= + pow(self.alpha, 2) * (self.n + self.k) - self.n
+        self.lambda_= ((self.alpha**2) * (self.n + self.k)) - self.n
+        self.xbar = np.transpose(self.x)
+        self.sigma = []
+        self.covariance_weights = np.zeros(self.n_sigma)
+        self.mean_weights = np.zeros(self.n_sigma)
         self.covariance_weights,self.mean_weights = self.get_weights()
 
     def get_weights(self):
-        self.covariance_weights[0] = (self.lambda_ / (self.n + self.lambda_)) + (1 - pow(self.alpha, 2) + self.beta)
+        print("n = ",self.n)
+        print("lambda = ",self.lambda_)
+        self.covariance_weights[0] = (self.lambda_ / (self.n + self.lambda_)) + (1 - (self.alpha**2) + self.beta)
         self.mean_weights[0] = (self.lambda_ / (self.n + self.lambda_))
-        for i in range(1,(2*self.n)):
-            self.covariance_weights[i] = 1/(2*(self.n - self.lambda_))
-            self.mean_weights[i] = 1/(2*(self.n - self.lambda_))
+        for i in range(1,self.n_sigma):
+            self.covariance_weights[i] = 1/(2*(self.n + self.lambda_))
+            self.mean_weights[i] = 1/(2*(self.n + self.lambda_))
+        #print("mean weights = ",self.mean_weights)
+        #print("c weights = ",self.covariance_weights)
         return self.covariance_weights, self.mean_weights
 
     def get_sigma_points(self):
         self.L = np.linalg.cholesky(np.dot((self.n + self.lambda_),self.Pxx))
-        self.xbar = np.average(self.x)
-        sigmaT = []
+        #print("L = ", self.L)
+        sigmaT = np.zeros((self.n_sigma, self.n))
         sigmaT[0] = self.xbar
         for i in range(1,self.n):
-            sigmaT[i] = self.xbar + self.L
-            sigmaT[i+self.n] = self.xbar - self.L
+            #print("i = ",i)
+            sigmaT[i] = self.xbar + self.L[i]
+            sigmaT[i+self.n] = self.xbar - self.L[i]
         self.sigma = np.transpose(sigmaT)
         return self.sigma
 
     def predict(self):
         self.sigma = self.get_sigma_points()
-        self.y = np.dot(self.F,self.sigma)
-        for i in range(2*self.n):
-            self.ybar = self.ybar + np.dot(self.mean_weights[i], self.y[i])
-        for i in range(2*self.n):
-            self.Pyy = self.Pyy + np.dot(self.covariance_weights[i],np.dot((self.y[i] - self.ybar),np.transpose((self.y[i] - self.ybar)))) + self.Q
-        return self.y
-
+        self.y = np.zeros(np.shape(self.sigma))
+        temp = np.zeros(np.shape(np.transpose(self.sigma)))
+        for i in range(self.n_sigma):
+            temp[i] = (np.dot(self.F,np.transpose(self.sigma)[i]))
+        self.y = np.transpose(temp)
+        self.ybar = np.zeros(self.n)
+        for i in range(self.n):
+            for j in range(self.n_sigma):
+                self.ybar[i] = self.ybar[i] + np.dot(self.mean_weights[j], self.y[i,j])
+        self.Pyy = np.zeros((self.n,self.n))
+        for i in range(self.n_sigma):#this loop taken from listed github, thanks to user balghane
+            delta = self.y.T[i] - self.ybar
+            delta = np.atleast_2d(delta)
+            self.Pyy += self.covariance_weights[i] * np.dot(delta.T, delta)
+        self.Pyy = self.Pyy + self.Q
+        #print("y = ",self.y)
+        #print("ybar = ",self.ybar)
+        return self.ybar
+        
     def update(self,z,H):
-        self.z = z
+        ztrue = z
         self.H = H
-        self.z = np.dot(self.H,self.y)
-        for i in range(2*self.n):
-            self.zbar = self.zbar + np.dot(self.mean_weights[i], self.z[i])
-        for i in range(2*self.n):
-            self.Pzz = self.Pzz + np.dot(self.covariance_weights[i],np.dot((self.z[i] - self.zbar),np.transpose((self.z[i] - self.zbar)))) + self.R
-        for i in range(2*self.n):
-            self.Pyz = self.Pyz + np.dot(self.covariance_weights[i],np.dot((self.y[i] - self.ybar),np.transpose((self.z[i] - self.zbar))))
+        temp = np.zeros(np.shape(np.transpose(self.y)))
+        for i in range(self.n_sigma):
+            temp[i] = (np.dot(self.H,np.transpose(self.y)[i]))
+        self.z = np.transpose(temp)
+        self.zbar = np.zeros(self.n)
+        for i in range(self.n):
+            for j in range(self.n_sigma):
+                self.zbar[i] = self.zbar[i] + np.dot(self.mean_weights[j], self.z[i,j])
+        self.Pzz = np.zeros((self.n,self.n))
+        for i in range(self.n_sigma):#this loop taken from listed github, thanks to user balghane
+            delta = self.z.T[i] - self.zbar
+            delta = np.atleast_2d(delta)
+            self.Pzz += self.covariance_weights[i] * np.dot(delta.T, delta)
+        self.Pzz = self.Pzz + self.R
+        self.Pyz = np.zeros((self.n,self.n))
+        for i in range(self.n_sigma):
+            delta1 = self.y.T[i] - self.ybar
+            delta1 = np.atleast_2d(delta1)
+            delta2 = self.z.T[i] - self.zbar
+            delta2 = np.atleast_2d(delta1)
+            self.Pyz += self.covariance_weights[i] * np.dot(delta1.T, delta2)
+
         self.K = np.dot(self.Pyz,np.linalg.inv(self.Pzz))
-        self.residual = self.z - self.zbar
-        self.x = self.ybar - np.dot(self.K, self.residual)
+        self.residual = abs(ztrue - np.transpose(self.zbar))
+        self.x = np.transpose([self.ybar]) - np.dot(self.K, np.transpose(self.residual))
         self.P = self.Pyy - np.dot(self.K,np.dot(self.Pzz,np.transpose(self.K)))
-        return self.x, self.P
+        #print("x = ",self.x)
+        return self.x, self.residual, self.P
     
 class ExtendedKalmanFilter:
     def __init__(self, F, H, Q, R, B, x_0, P_0) -> None:
@@ -133,8 +170,8 @@ class ExtendedKalmanFilter:
         self.x = np.dot(self.F, self.x) + np.dot(self.B, u)
         self.P = np.dot(self.F, np.dot(self.P, np.transpose(self.F))) + self.Q
         x = self.x
-        print("u = \n",u)
-        print("estimated x = \n", x)
+        #print("u = \n",u)
+        #print("estimated x = \n", x)
         return x
 
     def update(self,z,H):
@@ -152,11 +189,11 @@ class ExtendedKalmanFilter:
         self.x = self.x + np.dot(K, y)
         self.P = np.dot((np.identity(self.P.shape[0]) - np.dot(K,self.H)), self.P)
         x = self.x
-        residual = z - np.dot(self.H, self.x)
-        print("z = \n", z)
-        print("updated x = \n", x)
-        print("\n")
-        return x, residual
+        residual = abs(z - np.dot(self.H, self.x))
+        #print("z = \n", z)
+        #print("updated x = \n", x)
+        #print("\n")
+        return x, residual, self.P
 
 def test():
     # matrices taken from

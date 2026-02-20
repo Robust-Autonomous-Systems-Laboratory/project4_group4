@@ -165,7 +165,7 @@ class Ukf_prams():
                            [0,0,0,0,0,0,1,0,0],
                            [0,0,xw,0,0,yw,0,w,0],
                            [0,0,0,0,0,0,0,0,1]])
-        
+        self.R = np.identity(9) 
         self.P0 = np.identity(9)        
         self.Q = np.identity(9)
         self.x0 = np.array([[-0.6],[0],[0],[-0.6],[0],[0],[0],[0],[0]])
