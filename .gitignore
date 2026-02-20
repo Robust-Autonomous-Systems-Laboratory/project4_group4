@@ -3,4 +3,4 @@ src/.vscode/*
 build/*
 install/*
 log/*
-
+data/.~lock*
