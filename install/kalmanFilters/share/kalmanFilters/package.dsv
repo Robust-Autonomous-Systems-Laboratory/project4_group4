@@ -1,0 +1,3 @@
+source;share/kalmanFilters/hook/pythonpath.ps1
+source;share/kalmanFilters/hook/pythonpath.dsv
+source;share/kalmanFilters/hook/pythonpath.sh

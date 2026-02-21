@@ -1,0 +1,210 @@
+[0.032s] Invoking command in '/home/wbforney/proj4_ws/build/dynamixel_sdk': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/wbforney/proj4_ws/src/DynamixelSDK/ros/dynamixel_sdk -DCMAKE_INSTALL_PREFIX=/home/wbforney/proj4_ws/install/dynamixel_sdk
+[0.218s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.218s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.438s] -- Configuring done (0.4s)
+[0.445s] -- Generating done (0.0s)
+[0.448s] -- Build files have been written to: /home/wbforney/proj4_ws/build/dynamixel_sdk
+[0.452s] Invoked command in '/home/wbforney/proj4_ws/build/dynamixel_sdk' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/wbforney/proj4_ws/src/DynamixelSDK/ros/dynamixel_sdk -DCMAKE_INSTALL_PREFIX=/home/wbforney/proj4_ws/install/dynamixel_sdk
+[0.455s] Invoking command in '/home/wbforney/proj4_ws/build/dynamixel_sdk': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/wbforney/proj4_ws/build/dynamixel_sdk -- -j16 -l16
+[0.520s] [  5%] Built target ament_cmake_python_symlink_dynamixel_easy_sdk
+[0.520s] [  5%] Built target ament_cmake_python_symlink_dynamixel_sdk
+[0.520s] [100%] Built target dynamixel_sdk
+[0.676s] running egg_info
+[0.681s] running egg_info
+[0.690s] writing dynamixel_sdk.egg-info/PKG-INFO
+[0.690s] writing dependency_links to dynamixel_sdk.egg-info/dependency_links.txt
+[0.691s] writing top-level names to dynamixel_sdk.egg-info/top_level.txt
+[0.700s] writing dynamixel_easy_sdk.egg-info/PKG-INFO
+[0.701s] writing dependency_links to dynamixel_easy_sdk.egg-info/dependency_links.txt
+[0.701s] writing top-level names to dynamixel_easy_sdk.egg-info/top_level.txt
+[0.732s] reading manifest file 'dynamixel_sdk.egg-info/SOURCES.txt'
+[0.733s] writing manifest file 'dynamixel_sdk.egg-info/SOURCES.txt'
+[0.753s] reading manifest file 'dynamixel_easy_sdk.egg-info/SOURCES.txt'
+[0.754s] writing manifest file 'dynamixel_easy_sdk.egg-info/SOURCES.txt'
+[0.758s] [100%] Built target ament_cmake_python_build_dynamixel_sdk_egg
+[0.784s] [100%] Built target ament_cmake_python_build_dynamixel_easy_sdk_egg
+[0.796s] Invoked command in '/home/wbforney/proj4_ws/build/dynamixel_sdk' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/wbforney/proj4_ws/build/dynamixel_sdk -- -j16 -l16
+[0.797s] Invoking command in '/home/wbforney/proj4_ws/build/dynamixel_sdk': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/wbforney/proj4_ws/build/dynamixel_sdk
+[0.807s] -- Install configuration: ""
+[0.807s] -- Execute custom install script
+[0.808s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_easy_sdk/connector.hpp
+[0.821s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_easy_sdk/control_table.hpp
+[0.831s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_easy_sdk/data_types.hpp
+[0.841s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_easy_sdk/dynamixel_easy_sdk.hpp
+[0.849s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_easy_sdk/dynamixel_error.hpp
+[0.859s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_easy_sdk/group_executor.hpp
+[0.870s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_easy_sdk/motor.hpp
+[0.879s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/dynamixel_sdk.h
+[0.890s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/group_bulk_read.h
+[0.899s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/group_bulk_write.h
+[0.908s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/group_fast_bulk_read.h
+[0.920s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/group_fast_sync_read.h
+[0.930s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/group_handler.h
+[0.940s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/group_sync_read.h
+[0.950s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/group_sync_write.h
+[0.960s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/packet_handler.h
+[0.969s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/port_handler.h
+[0.981s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/port_handler_arduino.h
+[0.994s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/port_handler_linux.h
+[1.005s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/port_handler_mac.h
+[1.016s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/port_handler_windows.h
+[1.027s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/protocol1_packet_handler.h
+[1.036s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/include//dynamixel_sdk/protocol2_packet_handler.h
+[1.048s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/2xc430_w250.model
+[1.058s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/2xl430_w250.model
+[1.067s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/dynamixel.model
+[1.076s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/h42_20_s300_ra.model
+[1.084s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/h54_100_s500_ra.model
+[1.095s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/h54_200_s500_ra.model
+[1.104s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/m42_10_s260_ra.model
+[1.115s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/m54_40_s250_ra.model
+[1.126s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/m54_60_s250_ra.model
+[1.134s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/mx_106.model
+[1.144s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/mx_28.model
+[1.154s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/mx_64.model
+[1.164s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ph42_020_s300.model
+[1.174s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ph54_100_s500.model
+[1.183s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ph54_200_s500.model
+[1.193s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/pm42_010_s260.model
+[1.202s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/pm54_040_s250.model
+[1.213s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/pm54_060_s250.model
+[1.223s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/rh_p12_rn.model
+[1.232s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xc330_m181.model
+[1.242s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xc330_m181_fw52.model
+[1.252s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xc330_m288.model
+[1.262s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xc330_m288_fw52.model
+[1.273s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xc330_t181.model
+[1.283s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xc330_t181_fw52.model
+[1.292s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xc330_t288.model
+[1.300s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xc330_t288_fw52.model
+[1.309s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xc430_w150.model
+[1.320s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xc430_w240.model
+[1.331s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xd430_t210.model
+[1.340s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xd430_t350.model
+[1.349s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xd540_t150.model
+[1.357s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xd540_t270.model
+[1.365s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xh430_v210.model
+[1.373s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xh430_v350.model
+[1.381s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xh430_w210.model
+[1.389s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xh430_w350.model
+[1.397s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xh540_v150.model
+[1.405s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xh540_v270.model
+[1.415s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xh540_w150.model
+[1.425s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xh540_w270.model
+[1.434s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xl320.model
+[1.443s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xl330_m077.model
+[1.450s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xl330_m077_fw52.model
+[1.458s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xl330_m288.model
+[1.466s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xl330_m288_fw52.model
+[1.474s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xl430_w250.model
+[1.482s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xm430_w210.model
+[1.490s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xm430_w350.model
+[1.499s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xm540_w150.model
+[1.508s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xm540_w270.model
+[1.519s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xw430_t200.model
+[1.528s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xw430_t333.model
+[1.536s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xw540_h260.model
+[1.544s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xw540_t140.model
+[1.552s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/xw540_t260.model
+[1.560s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ym070_210_a051.model
+[1.569s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ym070_210_a099.model
+[1.577s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ym070_210_b001.model
+[1.585s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ym070_210_m001.model
+[1.594s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ym070_210_r051.model
+[1.603s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ym070_210_r099.model
+[1.611s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ym080_230_a051.model
+[1.622s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ym080_230_a099.model
+[1.629s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ym080_230_b001.model
+[1.638s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ym080_230_m001.model
+[1.646s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ym080_230_r051.model
+[1.654s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/control_table/ym080_230_r099.model
+[1.662s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/environment/pythonpath.sh
+[1.670s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/environment/pythonpath.dsv
+[1.678s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk-4.0.3-py3.12.egg-info/PKG-INFO
+[1.686s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk-4.0.3-py3.12.egg-info/SOURCES.txt
+[1.693s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk-4.0.3-py3.12.egg-info/dependency_links.txt
+[1.702s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk-4.0.3-py3.12.egg-info/top_level.txt
+[1.710s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/__init__.py
+[1.720s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_bulk_read.cpp
+[1.728s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_bulk_read.py
+[1.736s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_bulk_write.cpp
+[1.744s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_bulk_write.py
+[1.753s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_fast_bulk_read.cpp
+[1.761s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_fast_sync_read.cpp
+[1.769s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_handler.cpp
+[1.777s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_sync_read.cpp
+[1.785s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_sync_read.py
+[1.793s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_sync_write.cpp
+[1.801s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_sync_write.py
+[1.809s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/packet_handler.cpp
+[1.820s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/packet_handler.py
+[1.828s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/port_handler.cpp
+[1.835s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/port_handler.py
+[1.844s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/port_handler_arduino.cpp
+[1.852s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/port_handler_linux.cpp
+[1.860s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/port_handler_mac.cpp
+[1.868s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/port_handler_windows.cpp
+[1.877s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/protocol1_packet_handler.cpp
+[1.885s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/protocol1_packet_handler.py
+[1.892s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/protocol2_packet_handler.cpp
+[1.900s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/protocol2_packet_handler.py
+[1.909s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/robotis_def.py
+[1.920s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk-4.0.3-py3.12.egg-info/PKG-INFO
+[1.928s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk-4.0.3-py3.12.egg-info/SOURCES.txt
+[1.936s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk-4.0.3-py3.12.egg-info/dependency_links.txt
+[1.944s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk-4.0.3-py3.12.egg-info/top_level.txt
+[1.953s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/__init__.py
+[1.962s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/connector.cpp
+[1.971s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/connector.py
+[1.980s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/control_table.cpp
+[1.989s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/control_table.py
+[1.999s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/data_types.py
+[2.007s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/dynamixel_error.cpp
+[2.015s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/dynamixel_error.py
+[2.024s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/group_executor.cpp
+[2.032s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/group_executor.py
+[2.040s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/motor.cpp
+[2.048s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/motor.py
+[2.056s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/environment/library_path.sh
+[2.065s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/environment/library_path.dsv
+[2.073s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/ament_index/resource_index/package_run_dependencies/dynamixel_sdk
+[2.081s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/ament_index/resource_index/parent_prefix_path/dynamixel_sdk
+[2.089s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/environment/ament_prefix_path.sh
+[2.096s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/environment/ament_prefix_path.dsv
+[2.104s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/environment/path.sh
+[2.112s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/environment/path.dsv
+[2.124s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/local_setup.bash
+[2.132s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/local_setup.sh
+[2.140s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/local_setup.zsh
+[2.148s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/local_setup.dsv
+[2.156s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/package.dsv
+[2.164s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/ament_index/resource_index/packages/dynamixel_sdk
+[2.172s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/cmake/ament_cmake_export_targets-extras.cmake
+[2.180s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/cmake/ament_cmake_export_include_directories-extras.cmake
+[2.188s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/cmake/ament_cmake_export_libraries-extras.cmake
+[2.196s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/cmake/dynamixel_sdkConfig.cmake
+[2.204s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/cmake/dynamixel_sdkConfig-version.cmake
+[2.211s] -- Symlinking: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/package.xml
+[2.222s] -- Installing: /home/wbforney/proj4_ws/install/dynamixel_sdk/lib/libdynamixel_sdk.so
+[2.256s] Listing '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk'...
+[2.256s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/__init__.py'...
+[2.257s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_bulk_read.py'...
+[2.257s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_bulk_write.py'...
+[2.257s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_sync_read.py'...
+[2.257s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/group_sync_write.py'...
+[2.257s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/packet_handler.py'...
+[2.257s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/port_handler.py'...
+[2.257s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/protocol1_packet_handler.py'...
+[2.257s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/protocol2_packet_handler.py'...
+[2.257s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_sdk/robotis_def.py'...
+[2.291s] Listing '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk'...
+[2.291s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/__init__.py'...
+[2.291s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/connector.py'...
+[2.291s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/control_table.py'...
+[2.291s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/data_types.py'...
+[2.291s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/dynamixel_error.py'...
+[2.291s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/group_executor.py'...
+[2.291s] Compiling '/home/wbforney/proj4_ws/install/dynamixel_sdk/lib/python3.12/site-packages/dynamixel_easy_sdk/motor.py'...
+[2.295s] -- Installing: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/cmake/dynamixel_sdkExport.cmake
+[2.296s] -- Installing: /home/wbforney/proj4_ws/install/dynamixel_sdk/share/dynamixel_sdk/cmake/dynamixel_sdkExport-noconfig.cmake
+[2.298s] Invoked command in '/home/wbforney/proj4_ws/build/dynamixel_sdk' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/wbforney/proj4_ws/build/dynamixel_sdk

@@ -1,0 +1,25 @@
+[0.811s] Invoking command in '/home/wbforney/proj4_ws/src/kalmanFilters': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/wbforney/proj4_ws/build/kalmanFilters/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wbforney/proj4_ws/install/kalmanFilters/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/kalmanFilters build --build-base /home/wbforney/proj4_ws/build/kalmanFilters/build install --record /home/wbforney/proj4_ws/build/kalmanFilters/install.log --single-version-externally-managed install_data
+[0.987s] running egg_info
+[0.999s] writing ../../build/kalmanFilters/kalmanFilters.egg-info/PKG-INFO
+[0.999s] writing dependency_links to ../../build/kalmanFilters/kalmanFilters.egg-info/dependency_links.txt
+[0.999s] writing entry points to ../../build/kalmanFilters/kalmanFilters.egg-info/entry_points.txt
+[0.999s] writing requirements to ../../build/kalmanFilters/kalmanFilters.egg-info/requires.txt
+[1.000s] writing top-level names to ../../build/kalmanFilters/kalmanFilters.egg-info/top_level.txt
+[1.023s] reading manifest file '../../build/kalmanFilters/kalmanFilters.egg-info/SOURCES.txt'
+[1.023s] writing manifest file '../../build/kalmanFilters/kalmanFilters.egg-info/SOURCES.txt'
+[1.023s] running build
+[1.023s] running build_py
+[1.024s] copying kalmanFilters/kalman_node.py -> /home/wbforney/proj4_ws/build/kalmanFilters/build/lib/kalmanFilters
+[1.024s] running install
+[1.028s] running install_lib
+[1.039s] copying /home/wbforney/proj4_ws/build/kalmanFilters/build/lib/kalmanFilters/kalman_node.py -> /home/wbforney/proj4_ws/install/kalmanFilters/lib/python3.12/site-packages/kalmanFilters
+[1.040s] byte-compiling /home/wbforney/proj4_ws/install/kalmanFilters/lib/python3.12/site-packages/kalmanFilters/kalman_node.py to kalman_node.cpython-312.pyc
+[1.042s] running install_data
+[1.042s] running install_egg_info
+[1.054s] removing '/home/wbforney/proj4_ws/install/kalmanFilters/lib/python3.12/site-packages/kalmanFilters-0.0.0-py3.12.egg-info' (and everything under it)
+[1.055s] Copying ../../build/kalmanFilters/kalmanFilters.egg-info to /home/wbforney/proj4_ws/install/kalmanFilters/lib/python3.12/site-packages/kalmanFilters-0.0.0-py3.12.egg-info
+[1.055s] running install_scripts
+[1.140s] Installing covarCalc script to /home/wbforney/proj4_ws/install/kalmanFilters/lib/kalmanFilters
+[1.140s] Installing kalman script to /home/wbforney/proj4_ws/install/kalmanFilters/lib/kalmanFilters
+[1.140s] writing list of installed files to '/home/wbforney/proj4_ws/build/kalmanFilters/install.log'
+[1.170s] Invoked command in '/home/wbforney/proj4_ws/src/kalmanFilters' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/wbforney/proj4_ws/build/kalmanFilters/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wbforney/proj4_ws/install/kalmanFilters/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/kalmanFilters build --build-base /home/wbforney/proj4_ws/build/kalmanFilters/build install --record /home/wbforney/proj4_ws/build/kalmanFilters/install.log --single-version-externally-managed install_data

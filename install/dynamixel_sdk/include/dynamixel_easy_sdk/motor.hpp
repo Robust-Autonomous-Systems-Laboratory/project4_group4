@@ -1,0 +1,1 @@
+/home/wbforney/proj4_ws/src/DynamixelSDK/ros/dynamixel_sdk/include/dynamixel_easy_sdk/motor.hpp

@@ -1,0 +1,1 @@
+Invoking command in '/home/wbforney/proj4_ws/build/turtlebot3_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/wbforney/proj4_ws/build/turtlebot3_msgs -- -j16 -l16

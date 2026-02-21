@@ -1,0 +1,18 @@
+[0.024s] Invoking command in '/home/wbforney/proj4_ws/src/build/turtlebot3_navigation2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/wbforney/proj4_ws/src/turtlebot3/turtlebot3_navigation2 -DCMAKE_INSTALL_PREFIX=/home/wbforney/proj4_ws/src/install/turtlebot3_navigation2
+[0.186s] -- The C compiler identification is GNU 13.3.0
+[0.186s] -- The CXX compiler identification is GNU 13.3.0
+[0.186s] -- Detecting C compiler ABI info
+[0.192s] -- Detecting C compiler ABI info - done
+[0.198s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.198s] -- Detecting C compile features
+[0.198s] -- Detecting C compile features - done
+[0.205s] -- Detecting CXX compiler ABI info
+[0.289s] -- Detecting CXX compiler ABI info - done
+[0.297s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.298s] -- Detecting CXX compile features
+[0.298s] -- Detecting CXX compile features - done
+[0.301s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.425s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.616s] -- Configuring done (0.6s)
+[0.618s] -- Generating done (0.0s)
+[0.619s] -- Build files have been written to: /home/wbforney/proj4_ws/src/build/turtlebot3_navigation2

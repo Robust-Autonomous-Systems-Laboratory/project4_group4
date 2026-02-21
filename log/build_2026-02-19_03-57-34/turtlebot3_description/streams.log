@@ -1,0 +1,10 @@
+[0.027s] Invoking command in '/home/wbforney/proj4_ws/build/turtlebot3_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/wbforney/proj4_ws/src/turtlebot3/turtlebot3_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/wbforney/proj4_ws/install/turtlebot3_description
+[0.193s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.203s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.208s] -- Found urdf: 2.10.0 (/opt/ros/jazzy/share/urdf/cmake)
+[0.225s] -- Found TinyXML2 via Config file: /usr/lib/x86_64-linux-gnu/cmake/tinyxml2
+[0.302s] -- Configuring done (0.3s)
+[0.305s] -- Generating done (0.0s)
+[0.306s] -- Build files have been written to: /home/wbforney/proj4_ws/build/turtlebot3_description
+[0.359s] Invoked command in '/home/wbforney/proj4_ws/build/turtlebot3_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/wbforney/proj4_ws/src/turtlebot3/turtlebot3_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/wbforney/proj4_ws/install/turtlebot3_description
+[0.359s] Invoking command in '/home/wbforney/proj4_ws/build/turtlebot3_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/wbforney/proj4_ws/build/turtlebot3_description -- -j16 -l16

@@ -1,0 +1,12 @@
+{
+  "package_name": "turtlebot3_msgs",
+  "non_idl_tuples": [
+    "/home/wbforney/proj4_ws/src/turtlebot3_msgs:msg/SensorState.msg",
+    "/home/wbforney/proj4_ws/src/turtlebot3_msgs:msg/Sound.msg",
+    "/home/wbforney/proj4_ws/src/turtlebot3_msgs:msg/VersionInfo.msg",
+    "/home/wbforney/proj4_ws/src/turtlebot3_msgs:srv/Sound.srv",
+    "/home/wbforney/proj4_ws/src/turtlebot3_msgs:srv/Dqn.srv",
+    "/home/wbforney/proj4_ws/src/turtlebot3_msgs:srv/Goal.srv",
+    "/home/wbforney/proj4_ws/src/turtlebot3_msgs:action/Patrol.action"
+  ]
+}

@@ -1,0 +1,20 @@
+[0.026s] Invoking command in '/home/wbforney/proj4_ws/src/build/turtlebot3_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/wbforney/proj4_ws/src/turtlebot3/turtlebot3_description -DCMAKE_INSTALL_PREFIX=/home/wbforney/proj4_ws/src/install/turtlebot3_description
+[0.194s] -- The C compiler identification is GNU 13.3.0
+[0.194s] -- The CXX compiler identification is GNU 13.3.0
+[0.194s] -- Detecting C compiler ABI info
+[0.201s] -- Detecting C compiler ABI info - done
+[0.209s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.209s] -- Detecting C compile features
+[0.209s] -- Detecting C compile features - done
+[0.216s] -- Detecting CXX compiler ABI info
+[0.299s] -- Detecting CXX compiler ABI info - done
+[0.307s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.307s] -- Detecting CXX compile features
+[0.308s] -- Detecting CXX compile features - done
+[0.310s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.437s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.536s] -- Found urdf: 2.10.0 (/opt/ros/jazzy/share/urdf/cmake)
+[0.570s] -- Found TinyXML2 via Config file: /usr/lib/x86_64-linux-gnu/cmake/tinyxml2
+[0.664s] -- Configuring done (0.6s)
+[0.667s] -- Generating done (0.0s)
+[0.668s] -- Build files have been written to: /home/wbforney/proj4_ws/src/build/turtlebot3_description

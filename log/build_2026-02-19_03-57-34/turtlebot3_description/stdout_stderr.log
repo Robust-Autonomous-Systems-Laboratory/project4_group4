@@ -1,0 +1,7 @@
+-- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found urdf: 2.10.0 (/opt/ros/jazzy/share/urdf/cmake)
+-- Found TinyXML2 via Config file: /usr/lib/x86_64-linux-gnu/cmake/tinyxml2
+-- Configuring done (0.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/wbforney/proj4_ws/build/turtlebot3_description

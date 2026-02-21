@@ -1,0 +1,35 @@
+running egg_info
+creating ../../build/kalmanFilters/kalmanFilters.egg-info
+writing ../../build/kalmanFilters/kalmanFilters.egg-info/PKG-INFO
+writing dependency_links to ../../build/kalmanFilters/kalmanFilters.egg-info/dependency_links.txt
+writing entry points to ../../build/kalmanFilters/kalmanFilters.egg-info/entry_points.txt
+writing requirements to ../../build/kalmanFilters/kalmanFilters.egg-info/requires.txt
+writing top-level names to ../../build/kalmanFilters/kalmanFilters.egg-info/top_level.txt
+writing manifest file '../../build/kalmanFilters/kalmanFilters.egg-info/SOURCES.txt'
+reading manifest file '../../build/kalmanFilters/kalmanFilters.egg-info/SOURCES.txt'
+writing manifest file '../../build/kalmanFilters/kalmanFilters.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/wbforney/proj4_ws/build/kalmanFilters/build
+creating /home/wbforney/proj4_ws/build/kalmanFilters/build/lib
+creating /home/wbforney/proj4_ws/build/kalmanFilters/build/lib/kalmanFilters
+copying kalmanFilters/kalman_node.py -> /home/wbforney/proj4_ws/build/kalmanFilters/build/lib/kalmanFilters
+copying kalmanFilters/__init__.py -> /home/wbforney/proj4_ws/build/kalmanFilters/build/lib/kalmanFilters
+running install
+running install_lib
+creating /home/wbforney/proj4_ws/install/kalmanFilters/lib/python3.12/site-packages/kalmanFilters
+copying /home/wbforney/proj4_ws/build/kalmanFilters/build/lib/kalmanFilters/kalman_node.py -> /home/wbforney/proj4_ws/install/kalmanFilters/lib/python3.12/site-packages/kalmanFilters
+copying /home/wbforney/proj4_ws/build/kalmanFilters/build/lib/kalmanFilters/__init__.py -> /home/wbforney/proj4_ws/install/kalmanFilters/lib/python3.12/site-packages/kalmanFilters
+byte-compiling /home/wbforney/proj4_ws/install/kalmanFilters/lib/python3.12/site-packages/kalmanFilters/kalman_node.py to kalman_node.cpython-312.pyc
+byte-compiling /home/wbforney/proj4_ws/install/kalmanFilters/lib/python3.12/site-packages/kalmanFilters/__init__.py to __init__.cpython-312.pyc
+running install_data
+creating /home/wbforney/proj4_ws/install/kalmanFilters/share/ament_index
+creating /home/wbforney/proj4_ws/install/kalmanFilters/share/ament_index/resource_index
+creating /home/wbforney/proj4_ws/install/kalmanFilters/share/ament_index/resource_index/packages
+copying resource/kalmanFilters -> /home/wbforney/proj4_ws/install/kalmanFilters/share/ament_index/resource_index/packages
+copying package.xml -> /home/wbforney/proj4_ws/install/kalmanFilters/share/kalmanFilters
+running install_egg_info
+Copying ../../build/kalmanFilters/kalmanFilters.egg-info to /home/wbforney/proj4_ws/install/kalmanFilters/lib/python3.12/site-packages/kalmanFilters-0.0.0-py3.12.egg-info
+running install_scripts
+Installing kalman script to /home/wbforney/proj4_ws/install/kalmanFilters/lib/kalmanFilters
+writing list of installed files to '/home/wbforney/proj4_ws/build/kalmanFilters/install.log'

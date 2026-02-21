@@ -1,0 +1,22 @@
+[0.022s] Invoking command in '/home/wbforney/proj4_ws/build/turtlebot3_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/wbforney/proj4_ws/src/turtlebot3_simulations/turtlebot3_gazebo -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/wbforney/proj4_ws/install/turtlebot3_gazebo
+[0.315s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.315s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.326s] [31mCMake Error at CMakeLists.txt:23 (find_package):
+[0.326s]   By not providing "Findros_gz_sim.cmake" in CMAKE_MODULE_PATH this project
+[0.326s]   has asked CMake to find a package configuration file provided by
+[0.326s]   "ros_gz_sim", but CMake did not find one.
+[0.326s] 
+[0.326s]   Could not find a package configuration file provided by "ros_gz_sim" with
+[0.326s]   any of the following names:
+[0.326s] 
+[0.326s]     ros_gz_simConfig.cmake
+[0.326s]     ros_gz_sim-config.cmake
+[0.326s] 
+[0.326s]   Add the installation prefix of "ros_gz_sim" to CMAKE_PREFIX_PATH or set
+[0.327s]   "ros_gz_sim_DIR" to a directory containing one of the above files.  If
+[0.327s]   "ros_gz_sim" provides a separate development package or SDK, be sure it has
+[0.327s]   been installed.
+[0.327s] 
+[0.327s] [0m
+[0.327s] -- Configuring incomplete, errors occurred!
+[0.758s] Invoked command in '/home/wbforney/proj4_ws/build/turtlebot3_gazebo' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/wbforney/proj4_ws/src/turtlebot3_simulations/turtlebot3_gazebo -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/wbforney/proj4_ws/install/turtlebot3_gazebo

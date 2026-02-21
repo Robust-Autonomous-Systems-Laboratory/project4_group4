@@ -1,0 +1,18 @@
+[0.030s] Invoking command in '/home/wbforney/proj4_ws/build/dynamixel_sdk': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/wbforney/proj4_ws/src/DynamixelSDK/ros/dynamixel_sdk -DCMAKE_INSTALL_PREFIX=/home/wbforney/proj4_ws/install/dynamixel_sdk
+[0.371s] -- The C compiler identification is GNU 13.3.0
+[0.371s] -- The CXX compiler identification is GNU 13.3.0
+[0.371s] -- Detecting C compiler ABI info
+[0.371s] -- Detecting C compiler ABI info - done
+[0.371s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.371s] -- Detecting C compile features
+[0.371s] -- Detecting C compile features - done
+[0.371s] -- Detecting CXX compiler ABI info
+[0.371s] -- Detecting CXX compiler ABI info - done
+[0.371s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.371s] -- Detecting CXX compile features
+[0.371s] -- Detecting CXX compile features - done
+[0.372s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.450s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.772s] -- Configuring done (0.7s)
+[0.779s] -- Generating done (0.0s)
+[0.781s] -- Build files have been written to: /home/wbforney/proj4_ws/build/dynamixel_sdk

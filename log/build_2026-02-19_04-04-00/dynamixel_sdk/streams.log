@@ -1,0 +1,40 @@
+[0.030s] Invoking command in '/home/wbforney/proj4_ws/build/dynamixel_sdk': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/wbforney/proj4_ws/install/kalmanFilters:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/wbforney/proj4_ws/build/dynamixel_sdk -- -j16 -l16
+[0.314s] [ 16%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/protocol2_packet_handler.cpp.o[0m
+[0.314s] [ 16%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/protocol1_packet_handler.cpp.o[0m
+[0.315s] [ 22%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/group_bulk_write.cpp.o[0m
+[0.315s] [ 22%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/packet_handler.cpp.o[0m
+[0.316s] [ 33%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/group_sync_write.cpp.o[0m
+[0.316s] [ 33%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/group_handler.cpp.o[0m
+[0.316s] [ 38%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_easy_sdk/connector.cpp.o[0m
+[0.316s] [ 44%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/group_bulk_read.cpp.o[0m
+[0.316s] [ 55%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/group_fast_bulk_read.cpp.o[0m
+[0.316s] [ 55%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/port_handler.cpp.o[0m
+[0.316s] [ 61%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/group_fast_sync_read.cpp.o[0m
+[0.316s] [ 66%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_easy_sdk/dynamixel_error.cpp.o[0m
+[0.316s] [ 72%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/group_sync_read.cpp.o[0m
+[0.316s] [ 77%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_easy_sdk/control_table.cpp.o[0m
+[0.316s] [ 77%] Built target ament_cmake_python_symlink_dynamixel_easy_sdk
+[0.316s] [ 77%] Built target ament_cmake_python_symlink_dynamixel_sdk
+[0.316s] [ 83%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_easy_sdk/group_executor.cpp.o[0m
+[0.317s] [ 88%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_easy_sdk/motor.cpp.o[0m
+[0.329s] [ 94%] [32mBuilding CXX object CMakeFiles/dynamixel_sdk.dir/src/dynamixel_sdk/port_handler_linux.cpp.o[0m
+[0.417s] running egg_info
+[0.418s] creating dynamixel_sdk.egg-info
+[0.443s] writing dynamixel_sdk.egg-info/PKG-INFO
+[0.444s] writing dependency_links to dynamixel_sdk.egg-info/dependency_links.txt
+[0.444s] writing top-level names to dynamixel_sdk.egg-info/top_level.txt
+[0.445s] writing manifest file 'dynamixel_sdk.egg-info/SOURCES.txt'
+[0.540s] reading manifest file 'dynamixel_sdk.egg-info/SOURCES.txt'
+[0.543s] writing manifest file 'dynamixel_sdk.egg-info/SOURCES.txt'
+[0.606s] [ 94%] Built target ament_cmake_python_build_dynamixel_sdk_egg
+[0.624s] running egg_info
+[0.625s] creating dynamixel_easy_sdk.egg-info
+[0.646s] writing dynamixel_easy_sdk.egg-info/PKG-INFO
+[0.646s] writing dependency_links to dynamixel_easy_sdk.egg-info/dependency_links.txt
+[0.646s] writing top-level names to dynamixel_easy_sdk.egg-info/top_level.txt
+[0.647s] writing manifest file 'dynamixel_easy_sdk.egg-info/SOURCES.txt'
+[0.691s] reading manifest file 'dynamixel_easy_sdk.egg-info/SOURCES.txt'
+[0.692s] writing manifest file 'dynamixel_easy_sdk.egg-info/SOURCES.txt'
+[0.732s] [ 94%] Built target ament_cmake_python_build_dynamixel_easy_sdk_egg
+[1.318s] [100%] [32m[1mLinking CXX shared library libdynamixel_sdk.so[0m
+[1.432s] [100%] Built target dynamixel_sdk

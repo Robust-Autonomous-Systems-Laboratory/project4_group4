@@ -1,0 +1,3 @@
+[console_scripts]
+covarCalc = kalmanFilters.covarianceCalculations:main
+kalman = kalmanFilters.kalman_node:main
